@@ -1,10 +1,17 @@
 # For ubuntu, the latest tag points to the LTS version, since that is
 # recommended for general use.
-FROM python:3.6
+FROM python:3.6-slim
 
 # grab gosu for easy step-down from root
 ENV GOSU_VERSION 1.10
 RUN set -x \
+	&& buildDeps=' \
+		unzip \
+		ca-certificates \
+		dirmngr \
+		wget \
+	' \
+	&& apt-get update && apt-get install -y --no-install-recommends $buildDeps \
 	&& wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
 	&& wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture).asc" \
 	&& export GNUPGHOME="$(mktemp -d)" \
@@ -18,18 +25,14 @@ RUN set -x \
 ENV YOUTUBE_DL_WEBUI_SOURCE /usr/src/youtube_dl_webui
 WORKDIR $YOUTUBE_DL_WEBUI_SOURCE
 
-RUN buildDeps=' \
-		unzip \
-	' \
-	&& set -x \
+RUN : \
 	&& pip install --no-cache-dir youtube-dl flask \
-	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -fr /var/lib/apt/lists/* \
 	&& wget -O youtube-dl-webui.zip https://codeload.github.com/d0u9/youtube-dl-webui/zip/dev \
 	&& unzip youtube-dl-webui.zip \
     && cd youtube-dl-webui*/ \
     && cp -r ./* $YOUTUBE_DL_WEBUI_SOURCE/ \
 	&& cd .. && rm -rf youtube-dl-webui* \
-	&& apt-get purge -y --auto-remove ca-certificates wget unzip \
+	&& apt-get purge -y --auto-remove ca-certificates wget unzip dirmngr \
 	&& rm -fr /var/lib/apt/lists/*
 
 COPY docker-entrypoint.sh /usr/local/bin
