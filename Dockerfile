@@ -27,7 +27,7 @@ WORKDIR $YOUTUBE_DL_WEBUI_SOURCE
 
 RUN : \
 	&& pip install --no-cache-dir youtube-dl flask \
-	&& wget -O youtube-dl-webui.zip https://codeload.github.com/d0u9/youtube-dl-webui/zip/dev \
+	&& wget -O youtube-dl-webui.zip https://codeload.github.com/d0u9/youtube-dl-webui/zip/web_dev \
 	&& unzip youtube-dl-webui.zip \
     && cd youtube-dl-webui*/ \
     && cp -r ./* $YOUTUBE_DL_WEBUI_SOURCE/ \
