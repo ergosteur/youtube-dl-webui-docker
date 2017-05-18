@@ -30,7 +30,7 @@ RUN : \
 	&& wget -O youtube-dl-webui.zip https://codeload.github.com/d0u9/youtube-dl-webui/zip/web_dev \
 	&& unzip youtube-dl-webui.zip \
 	&& cd youtube-dl-webui*/ \
-	&& sed -i 's/app.run(/app.run(host=0.0.0.0, port=5000, /g' youtube_dl_webui/server.py \
+	&& sed -i "s/app.run(/app.run(host='0.0.0.0', port=5000, /g" youtube_dl_webui/server.py \
 	&& cp -r ./* $YOUTUBE_DL_WEBUI_SOURCE/ \
 	&& cd .. && rm -rf youtube-dl-webui* \
 	&& apt-get purge -y --auto-remove ca-certificates wget unzip dirmngr \
