@@ -33,7 +33,7 @@ RUN : \
 	&& sed -i "s/app.run(/app.run(host='0.0.0.0', port=5000, /g" youtube_dl_webui/server.py \
 	&& cp -r ./* $YOUTUBE_DL_WEBUI_SOURCE/ \
 	&& cd .. && rm -rf youtube-dl-webui* \
-	&& apt-get purge -y --auto-remove ca-certificates wget unzip dirmngr \
+	&& apt-get purge -y --auto-remove wget unzip dirmngr \
 	&& rm -fr /var/lib/apt/lists/*
 
 COPY docker-entrypoint.sh /usr/local/bin
