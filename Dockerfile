@@ -39,4 +39,4 @@ RUN : \
 COPY docker-entrypoint.sh /usr/local/bin
 ENTRYPOINT ["docker-entrypoint.sh"]
 
-CMD ["python", "-m", "youtube_dl_webui", "-c", "example_config.json"]
+CMD ["python", "-m", "youtube_dl_webui"]
