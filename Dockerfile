@@ -31,6 +31,7 @@ RUN : \
 	&& unzip youtube-dl-webui.zip \
 	&& cd youtube-dl-webui*/ \
 	&& cp -r ./* $YOUTUBE_DL_WEBUI_SOURCE/ \
+	&& ln -s $YOUTUBE_DL_WEBUI_SOURCE/example_config.json /etc/youtube-dl-webui.json \
 	&& cd .. && rm -rf youtube-dl-webui* \
 	&& apt-get purge -y --auto-remove wget unzip dirmngr \
 	&& rm -fr /var/lib/apt/lists/*

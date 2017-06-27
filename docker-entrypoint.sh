@@ -4,7 +4,7 @@ set -e
 pgid=${PGID:-$(id -u nobody)}
 puid=${PUID:-$(id -g nobody)}
 
-conf=${CONF_FILE:-"/etc/youtube-dl-webui.conf"}
+conf=${CONF_FILE:-"/etc/youtube-dl-webui.json"}
 host=${HOST:-"0.0.0.0"}
 port=${PORT:-5000}
 
