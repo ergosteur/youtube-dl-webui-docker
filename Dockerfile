@@ -37,6 +37,7 @@ RUN : \
 	&& rm -fr /var/lib/apt/lists/*
 
 COPY docker-entrypoint.sh /usr/local/bin
+COPY default_config.json /config.json
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD ["python", "-m", "youtube_dl_webui"]
