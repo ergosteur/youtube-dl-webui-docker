@@ -10,6 +10,7 @@ RUN set -x \
 		ca-certificates \
 		dirmngr \
 		wget \
+		xz-utils \
 	' \
 	&& apt-get update && apt-get install -y --no-install-recommends $buildDeps \
 	&& wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
@@ -20,6 +21,17 @@ RUN set -x \
 	&& rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu \
 	&& gosu nobody true
+
+# install ffmpeg
+ENV FFMPEG_URL 'https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-64bit-static.tar.xz'
+RUN : \
+	&& mkdir -p /tmp/ffmpeg \
+	&& cd /tmp/ffmpeg \
+	&& wget -O ffmpeg.tar.xz "$FFMPEG_URL" \
+	&& tar -xf ffmpeg.tar.xz -C . --strip-components 1 \
+	&& cp ffmpeg ffmpeg-10bit ffprobe ffserver qt-faststart /usr/bin \
+	&& cd .. \
+	&& rm -fr /tmp/ffmpeg
 
 # install youtube-dl-webui
 ENV YOUTUBE_DL_WEBUI_SOURCE /usr/src/youtube_dl_webui
