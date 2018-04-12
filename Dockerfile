@@ -29,7 +29,7 @@ RUN : \
 	&& cd /tmp/ffmpeg \
 	&& wget -O ffmpeg.tar.xz "$FFMPEG_URL" \
 	&& tar -xf ffmpeg.tar.xz -C . --strip-components 1 \
-	&& cp ffmpeg ffmpeg-10bit ffprobe ffserver qt-faststart /usr/bin \
+	&& cp ffmpeg ffmpeg-10bit ffprobe qt-faststart /usr/bin \
 	&& cd .. \
 	&& rm -fr /tmp/ffmpeg
 
