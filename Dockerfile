@@ -11,6 +11,7 @@ RUN set -x \
 		dirmngr \
 		wget \
 		xz-utils \
+                gpg \
 	' \
 	&& apt-get update && apt-get install -y --no-install-recommends $buildDeps \
 	&& wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
