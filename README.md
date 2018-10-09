@@ -55,6 +55,16 @@ Visit [GitHub](https://github.com/d0u9/youtube-dl-webui) for more details.
         [Install]
         WantedBy=default.target
 
+## Default configurations
+
+All defualt settings can be found in [this json file](https://github.com/d0u9/docker/blob/master/dockerfiles/youtube-dl-webui/default_config.json).
+
+- Files save to: `/tmp/youtube_dl`;
+- Database file location: `/tmp/youtube_dl_webui.db`;
+- Log size: `10`;
+- Listen address: `0.0.0.0`;
+- Listen port: `5000`
+
 ---
 
 
