@@ -1,19 +1,14 @@
 # youtube-dl-webui
 
----
 
-Visit [GitHub](https://github.com/d0u9/youtube-dl-webui) for more details.
+Visit [GitHub](https://github.com/ergosteur/youtube-dl-webui-docker) for more details.
 
 
 ## Install
 
 1. From DockerHUB
 
-        docker pull d0u9/youtube-dl-webui
-
-    For china users, aliyun docker repo is more preferable:
-
-        docker pull registry.cn-hangzhou.aliyuncs.com/master/youtube-dl-webui
+        docker pull ergosteur/youtube-dl-webui
 
 
 2. From DockerFile
@@ -31,13 +26,12 @@ Visit [GitHub](https://github.com/d0u9/youtube-dl-webui) for more details.
             -e PUID=<uid> \
             -e PORT=port \
             -e CONF_FILE=<config_file_in_container> \
-            -v <config_file>:<config_file_in_container> \
             -p <host_port>:<port> \
             -v <host_download_dir>:<download_dir> \
-            d0u9/youtube-dl-webui
+            ergosteur/youtube-dl-webui
 
 
-2. Automatically start container after booting
+2. Automatically start container after booting (old method, now include docker-compose.yml)
 
     Create `/etc/systemd/system/docker-youtube_dl_webui.service`, and fill
     with the contents below:
@@ -57,10 +51,10 @@ Visit [GitHub](https://github.com/d0u9/youtube-dl-webui) for more details.
 
 ## Default configurations
 
-All defualt settings can be found in [this json file](https://github.com/d0u9/docker/blob/master/dockerfiles/youtube-dl-webui/default_config.json).
+All default settings can be found in [this json file](https://github.com/ergosteur/youtube-dl-webui-docker/blob/master/default_config.json).
 
-- Files save to: `/tmp/youtube_dl`;
-- Database file location: `/tmp/youtube_dl_webui.db`;
+- Files save to: `/srv/youtube_dl`;
+- Database file location: `/srv/youtube_dl/youtube_dl_webui.db`;
 - Log size: `10`;
 - Listen address: `0.0.0.0`;
 - Listen port: `5000`

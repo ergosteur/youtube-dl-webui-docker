@@ -1,0 +1,7 @@
+ytdlwebui:
+  image: ergosteur/youtube-dl-webui
+  ports:
+    - "5000:5000"
+  volumes:
+    - ./youtube_dl_data:/srv/youtube_dl
+  restart: always
