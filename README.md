@@ -1,5 +1,8 @@
 # youtube-dl-webui
 
+2019-12-27 updates:
+- youtube-dl, pip and flask will be updated from PyPI during build
+- ffmpeg uses version from apt repo (Debian)
 
 Visit [GitHub](https://github.com/ergosteur/youtube-dl-webui-docker) for more details.
 
